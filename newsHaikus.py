@@ -37,4 +37,20 @@ def process(data, index):
     else:
         print ("Error fetching data.")
 
+def select(syllableCount):
+    syllablesRemaining = syllableCount
+    wordIndex = 0
+    line = ""
+    while (syllablesRemaining > 0):
+        current = processed[wordIndex]
+        #print (current[0])
+        if (syllablesRemaining >= current[2]): #number of syllables in current word
+            line += (current[0] + " ")
+            #print ("selected!")
+            syllablesRemaining -= current[2] #subtract amount of syllables added
+        wordIndex += 1
+    #continue looping through words until line is filled
+    return line
+
 process(top_articles_data, 10)
+print (select(5))
