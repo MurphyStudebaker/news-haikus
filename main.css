@@ -1,1 +1,54 @@
 /* Styling for Haiku the News */
+* {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(247, 218, 183);
+}
+
+p {
+  font-family: "Quicksand";
+  font-size: .8rem;
+  color: rgb(28, 21, 74);
+}
+
+h1 {
+  font-family: "Crimson Text";
+  font-weight: 700;
+  font-size: 5rem;
+}
+
+h3 {
+  font-family: "Quicksand";
+  font-size: .8rem;
+}
+
+.container {
+  display: flex;
+}
+
+.left {
+  width: 35%;
+  padding-top: 8rem;
+  padding-left: 6rem;
+}
+
+.right {
+  padding-left: 5rem;
+  padding-top: 10rem;
+}
+
+.input-bar {
+  padding: .75rem;
+  width: 15rem;
+  border: thin solid black;
+  background-color: rgb(245, 237, 237)
+}
+
+.poem {
+  border: thin solid black;
+  background-color: rgb(255, 255, 255);
+  padding: 3rem 3rem 1rem 3rem;
+  margin-top: 3rem;
+  width: 25rem;
+  height: 15rem;
+}

@@ -56,6 +56,12 @@ def init():
                 i -= 1
         else:
             print ("Rain, ice, gloom, and fog \n because a fatal error \n occurred with data")
+    elif (selection == "3"):
+        print ("~ ~ ~ B B C ~ ~ ~")
+        from_source("bbc-news")
+        print ("~ ~ ~ B R E I T B A R T ~ ~ ~")
+        from_source("breitbart-news")
+
     else:
         print ("My condolances, \n but your selection is wrong \n please attempt once more")
 
@@ -118,6 +124,21 @@ def write_line(position, max_syllables, processed_array):
         current += 1
 
     return line
+
+def from_source(source):
+    i = 5
+    while (i > 0):
+        source_data = news_api.get_everything(sources=source)
+        if (source_data["status"] == "ok" and source_data["totalResults"] > 3):
+            print("Writing your haiku book . . .")
+            i = 3
+            while (i > 0):
+                processedDesc = processArticle(source_data, i, "description")
+                processedTitle = processArticle(source_data, i, "title")
+                writeHaiku(pattern, processedDesc, processedTitle)
+                i -= 1
+        else:
+            print ("Could not fetch articles from that source.")
 
 def writeHaiku(pattern, desc, title):
     print ("\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n")
