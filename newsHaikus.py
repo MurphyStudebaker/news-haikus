@@ -33,10 +33,11 @@ def init():
     if (selection == "1"):
         top_articles_data = news_api.get_top_headlines(language='en', country='us')
         if (top_articles_data["status"] == "ok"):
+            total_sources = top_articles_data["totalResults"]
             i = 5
             chosen = []
             while (i > 0):
-                index = random.randint(0, 20)
+                index = random.randint(0, total_sources)
                 processedDesc = processArticle(top_articles_data, index, "description")
                 processedTitle = processArticle(top_articles_data, index, "title")
                 writeHaiku(pattern, processedDesc, processedTitle)
@@ -81,6 +82,8 @@ def processArticle(data, index, desired): #desired = description or title
         length = len(hyphen.syllables(word[0]))
         if (length == 0):
             length = 1 #adjust for bug
+        elif (length == 1 and len(word[0]) > 4):
+            length += 1
         entry = word + (length,)
         processed.append(entry)
     return processed
