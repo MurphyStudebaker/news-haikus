@@ -125,6 +125,7 @@ def write_line(position, max_syllables, processed_array):
 
     return line
 
+#prints three haikus from the desired source, according to source IDs listed on Google News API documentation
 def from_source(source):
     i = 5
     while (i > 0):
@@ -140,6 +141,7 @@ def from_source(source):
         else:
             print ("Could not fetch articles from that source.")
 
+#prints haiku by generating each line
 def writeHaiku(pattern, desc, title):
     print ("\n~ ~ ~ ~ ~ ~ ~ ~ ~ ~\n")
     print (write_line(0, 5, title))
