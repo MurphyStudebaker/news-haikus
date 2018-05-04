@@ -18,7 +18,7 @@ top_articles_data = []
 keyword_data = []
 
 line_1 = ["VB","NNP","NN","NNP","NN"]
-line_2 = ["CC","NN", "CC", "JJ", "NN","VB"]
+line_2 = ["NNP","VB", "IN", "JJ", "NN","VB"]
 line_3 = ["NN", "IN", "NNP", "NN"]
 pattern = [line_1, line_2, line_3]
 position = 0;
@@ -46,7 +46,7 @@ def init():
             print ("Rain, ice, gloom, and fog \n because a fatal error \n occurred with data")
     elif (selection == "2"):
         keyword = input("Enter a news topic: ")
-        keyword_data = news_api.get_everything(q=keyword)
+        keyword_data = news_api.get_top_headlines(q=keyword)
         if (keyword_data["status"] == "ok" and keyword_data["totalResults"] > 3):
             print("Writing your haiku book . . .")
             i = 3
@@ -152,3 +152,14 @@ def writeHaiku(pattern, desc, title):
     print (write_line(6, 5, desc))
 
 init()
+
+def print_process():
+    chosen = 2
+    top_articles_data = news_api.get_top_headlines(language='en', country='us')
+    article = top_articles_data['articles'][chosen]
+    title = article["description"]
+    print (title)
+    processed = processArticle(top_articles_data, chosen, "description")
+    pTitle = processArticle(top_articles_data, chosen, "title")
+    print (processed)
+    print (writeHaiku(pattern, processed, pTitle))
