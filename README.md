@@ -5,9 +5,11 @@ to turn news headlines and articles into haikus that capture the media in a new 
 # Dependencies
 The following libraries must be installed before running:
 PyHyphen Library
-(pip install phyhyphen)
+(pip install pyhyphen)
 Natural Language Toolkit
 (pip install -U nltk)
+News API python library
+(pip install newsapi-python)
 
 A Google News API key is needed to run this program. It can be obtained at https://newsapi.org/ and
 added to the config.py file, or replaced on line 11 of newsHaikus.py.
@@ -18,4 +20,4 @@ keyword (Note that only extremely relevant keywords will produce results) before
 a haiku book of articles with that keyword. The third option prints books from
 different news sources that can be specified in the code according to the API source tags.
 
-This program must run on a computer connected to the internet in order to work. 
+This program must run on a computer connected to the internet in order to work.
