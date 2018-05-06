@@ -8,7 +8,7 @@ import config
 import random
 
 #API access setup
-key = config.API_KEY
+key = config.API_KEY #change this to your own API key
 news_api = NewsApiClient(api_key=key)
 
 #Language processing set up
@@ -16,13 +16,13 @@ hyphen = Hyphenator('en_US')
 
 top_articles_data = []
 keyword_data = []
-
 line_1 = ["VB","NNP","NN","NNP","NN"]
 line_2 = ["NNP","VB", "IN", "JJ", "NN","VB"]
 line_3 = ["NN", "IN", "NNP", "NN"]
 pattern = [line_1, line_2, line_3]
 position = 0;
 
+#call this method to run the program
 def init():
     print ("~ ~ ~ ~ H A I K U ~ T H E ~ N E W S ~ ~ ~ ~\n")
     print ("1. Top Articles Today")
@@ -62,7 +62,6 @@ def init():
         from_source("bbc-news")
         print ("~ ~ ~ B R E I T B A R T ~ ~ ~")
         from_source("breitbart-news")
-
     else:
         print ("My condolances, \n but your selection is wrong \n please attempt once more")
 
@@ -94,7 +93,6 @@ def write_line_wp(position, max_syllables, speech_pattern, processed_array): #se
     line = ""
     pattern_index = 0
     current = position;
-    #current = random.randint(0,len(processed_array))
     while (remaining > 0):
         word = processed_array[current]
         if (word[2] <= max_syllables and word[1] in speech_pattern[pattern_index]):
@@ -151,8 +149,8 @@ def writeHaiku(pattern, desc, title):
     print (write_line(0, 7, desc))
     print (write_line(6, 5, desc))
 
-init()
-
+#A method to print the process of haiku creation. It will print the plain description,
+#followed by the word classificiation, followed by the haiku.
 def print_process():
     chosen = 2
     top_articles_data = news_api.get_top_headlines(language='en', country='us')
@@ -163,3 +161,6 @@ def print_process():
     pTitle = processArticle(top_articles_data, chosen, "title")
     print (processed)
     print (writeHaiku(pattern, processed, pTitle))
+
+#sandbox
+init()
