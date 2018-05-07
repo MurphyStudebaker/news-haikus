@@ -30,7 +30,7 @@ def init():
     print ("3. Compare sources")
     selection = input("Select: ")
     print (selection)
-    if (selection == "1"):
+    if (selection == "1" or selection == 1):
         top_articles_data = news_api.get_top_headlines(language='en', country='us')
         if (top_articles_data["status"] == "ok"):
             total_sources = top_articles_data["totalResults"]
@@ -44,7 +44,7 @@ def init():
                 i -= 1
         else:
             print ("Rain, ice, gloom, and fog \n because a fatal error \n occurred with data")
-    elif (selection == "2"):
+    elif (selection == "2" or selection == 2 ):
         keyword = input("Enter a news topic: ")
         keyword_data = news_api.get_top_headlines(q=keyword)
         if (keyword_data["status"] == "ok" and keyword_data["totalResults"] > 3):
@@ -57,7 +57,7 @@ def init():
                 i -= 1
         else:
             print ("Rain, ice, gloom, and fog \n because a fatal error \n occurred with data")
-    elif (selection == "3"):
+    elif (selection == "3" or selection == 3):
         print ("~ ~ ~ B B C ~ ~ ~")
         from_source("bbc-news")
         print ("~ ~ ~ B R E I T B A R T ~ ~ ~")
